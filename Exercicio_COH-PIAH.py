@@ -1,17 +1,4 @@
 import re
-def compara_assinatura(as_a, as_b):
-    '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
-
-def calcula_assinatura(texto):
-    '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-    pass
-
-def avalia_textos(textos, ass_cp):
-    '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
-    
-    pass
-
 
 def le_assinatura():
     '''A funcao le os valores dos tracos linguisticos do modelo e devolve uma assinatura a ser comparada com os textos fornecidos'''
@@ -82,4 +69,55 @@ def n_palavras_diferentes(lista_palavras):
             freq[p] = 1
 
     return len(freq)
+
+def calcula_assinatura(texto): 
+    '''Primeira variavel a ser resolvida'''
+    '''Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
+    #texto = str(input(le_textos())) 
+    '''print(le_assinatura(texto))'''
+   
+    
+ 
+    
+    pass
+
+def compara_assinatura(as_a, as_b): 
+    '''Segunda variavel a ser resolvida'''
+    '''Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.''' 
+    S_ab = 0 #grau de similaridade extre os textos A e B
+    F_ia = 0 #valor de cada traço linguístico i no texto A
+    F_ib = 0 #valor de cada traço linguístico i no texto B
+     
+    pass
+
+def avalia_textos(textos, ass_cp):
+    '''Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero 
+    (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
+    
+    pass
+
+#assinatura = le_assinatura()
+texto = le_textos()
+
+texto1 = texto[0]
+sep_sentencas = (separa_sentencas(texto1))
+
+sep_frases = []
+for i in range(len(sep_sentencas)):
+    sep_frases.append((separa_frases(sep_sentencas[i])))
+
+sep_palavras = []
+for frases in sep_frases:
+    for frase in frases:
+        palavras = frase.split()
+        sep_palavras.append(palavras)
+print(sep_palavras)
+
+for palavras in sep_palavras:
+    palavras_unicas = n_palavras_unicas(sep_palavras[palavras])
+
+palavras_unicas = n_palavras_unicas(sep_palavras[0])
+palavras_diferentes = n_palavras_diferentes(sep_palavras)
+print("Palavras que aparecem uma única vez:",palavras_unicas)
+print("Palavras diferentes utilizadas:",palavras_diferentes)
 
