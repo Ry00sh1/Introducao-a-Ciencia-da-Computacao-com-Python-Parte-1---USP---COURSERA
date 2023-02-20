@@ -103,16 +103,15 @@ texto1 = texto[0]
 sep_sentencas = (separa_sentencas(texto1))
 
 sep_frases = []
-for i in range(len(sep_sentencas)):
-    sep_frases.append((separa_frases(sep_sentencas[i])))
+for frase in sep_sentencas:
+    sep_frases.append((separa_frases(frase)))
 
 sep_palavras = []
-for frases in sep_frases:
-    for frase in frases:
-        palavras = frase.split()
-        sep_palavras.append(palavras)
+for palavras in sep_frases:
+    for palavra in palavras:
+        sep_palavras.append((separa_palavras(palavra)))
 print(sep_palavras)
-
+'''
 for palavras in sep_palavras:
     palavras_unicas = n_palavras_unicas(sep_palavras[palavras])
 
@@ -121,3 +120,4 @@ palavras_diferentes = n_palavras_diferentes(sep_palavras)
 print("Palavras que aparecem uma única vez:",palavras_unicas)
 print("Palavras diferentes utilizadas:",palavras_diferentes)
 
+'''
