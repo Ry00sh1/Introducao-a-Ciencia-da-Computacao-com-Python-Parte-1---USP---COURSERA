@@ -71,18 +71,47 @@ def n_palavras_diferentes(lista_palavras):
     return len(freq)
 
 def calcula_assinatura(texto): 
-    '''Primeira variavel a ser resolvida'''
     '''Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-    #texto = str(input(le_textos())) 
-    '''print(le_assinatura(texto))'''
+    
+    sep_sentencas = (separa_sentencas(texto))
+
+    sep_frases = []
+    for frase in sep_sentencas:
+        sep_frases.append((separa_frases(frase)))
+
+    sep_palavras = [];
+    for palavras in sep_frases:
+        for palavra in palavras:
+            sep_palavras.append((separa_palavras(palavra)))
    
+    junta_palavras = []
+    for sublista in sep_palavras:
+        junta_palavras.extend(sublista)
+
+    numero_palavras = len(junta_palavras)
     
- 
-    
-    pass
+    numero_caracteres = 0
+    for caractere in junta_palavras:
+        numero_caracteres += len(caractere)
+
+    palavras_unicas = n_palavras_unicas(junta_palavras)
+    palavras_diferentes = n_palavras_diferentes(junta_palavras)
+    tam_senteca = 0
+    for sentença in sep_sentencas: 
+        tam_senteca += len(sentença)
+
+    num_frases = sum((len(sep_sentencas)) for sentenca in sep_sentencas)
+
+    wal = numero_caracteres/numero_palavras
+    hlr = palavras_unicas / numero_palavras
+    ttr = palavras_diferentes / numero_palavras
+    sal = tam_senteca/len(sep_sentencas)
+    sac = len(sep_frases) / num_frases
+    pal = numero_caracteres / len(sep_frases)
+
+    return [wal, ttr, hlr, sal, sac, pal]
 
 def compara_assinatura(as_a, as_b): 
-    '''Segunda variavel a ser resolvida'''
     '''Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.''' 
     S_ab = 0 #grau de similaridade extre os textos A e B
     F_ia = 0 #valor de cada traço linguístico i no texto A
@@ -94,30 +123,57 @@ def avalia_textos(textos, ass_cp):
     '''Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero 
     (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
     
+    
     pass
 
 #assinatura = le_assinatura()
-texto = le_textos()
+textos = le_textos()
 
+assinaturas = []
+cont=1
+for texto in textos:
+    print("Assinatura do texto",cont,calcula_assinatura(texto))
+    assinaturas.append(calcula_assinatura(texto))
+    cont+=1
+
+
+#avalia = avalia_textos(textos, assinatura)
+
+
+
+
+'''
 texto1 = texto[0]
 sep_sentencas = (separa_sentencas(texto1))
+
+print("Sentenças separadas: \n",sep_sentencas)
+
 
 sep_frases = []
 for frase in sep_sentencas:
     sep_frases.append((separa_frases(frase)))
+    
+print("Frases separadas: \n",sep_frases)
+    
 
 sep_palavras = []
 for palavras in sep_frases:
     for palavra in palavras:
         sep_palavras.append((separa_palavras(palavra)))
-print(sep_palavras)
-'''
-for palavras in sep_palavras:
-    palavras_unicas = n_palavras_unicas(sep_palavras[palavras])
+print("Palavras separadas: \n",sep_palavras)
 
-palavras_unicas = n_palavras_unicas(sep_palavras[0])
-palavras_diferentes = n_palavras_diferentes(sep_palavras)
-print("Palavras que aparecem uma única vez:",palavras_unicas)
-print("Palavras diferentes utilizadas:",palavras_diferentes)
+junta_palavras = []
+for sublista in sep_palavras:
+    junta_palavras.extend(sublista)
 
+palavras_unicas = 0
+for palavras_uni in sep_palavras:
+    palavras_unicas = n_palavras_unicas(junta_palavras)
+
+palavras_diferentes = 0
+for palavras_dif in sep_palavras:
+    palavras_diferentes = n_palavras_diferentes(junta_palavras)
+
+print("Número de palavras únicas: ", palavras_unicas)
+print("Número de palavras diferentes: ", palavras_diferentes)
 '''
